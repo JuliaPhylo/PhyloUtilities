@@ -1,0 +1,31 @@
+remote_theme: just-the-docs/just-the-docs
+title: PhyloNetworks wiki
+exclude:
+   - readme.md
+   - data/
+   - scripts/
+aux_links:
+  "Materials on GitHub":
+    - "//github.com/JuliaPhylo/PhyloUtilities"
+footer_content: "Copyright JuliaPhylo &copy; 2025. Distributed by an <a href=\"https://github.com/JuliaPhylo/PhyloUtilities/tree/master/LICENSE\">MIT license.</a>"
+callouts_level: quiet # or loud
+callouts:
+  highlight:
+    color: yellow
+  important:
+    title: Important
+    color: blue
+  new:
+    title: New
+    color: green
+  note:
+    title: Note
+    color: purple
+  warning:
+    title: Warning
+    color: red
+compress_html:
+  blanklines: true
+# LaTeX rendering via "katex" (KaTeX, default) or "mathjax" (MathJax) or "none" / "off" (NO rendering)
+# https://github.com/just-the-docs/just-the-docs/issues/198
+latex: katex

@@ -86,7 +86,6 @@ Backup[ ]of[ ]*.numbers/
 
 # open office
 *.odt
-*.csv
 
 # inkscape drawings
 *.svg

@@ -4,11 +4,13 @@ title: About
 nav_order: 1
 ---
 
+# From alignments to concordance factors: pipeline to generate input data for SNaQ
+
 This site has material for a software workshop on
 phylogenetic networks,
 used at the 2018 & 2019 [MBL](https://molevol.mbl.edu/index.php/Main_Page)
 workshop on molecular evolution (earlier version for a [2016 workshop](http://tandy.cs.illinois.edu/symposium-2016.html)).
-<!-- also at the 2019 [Midwest](https://phylosdd.github.io/MidwestPhylo2019/) Phylogenetics Workshop -->
+
 It covers steps of the TICR pipeline to go from a bunch of multiple alignments
 (aligned gene sequences, or loci) to a concordance factors. These concordance factors can then be used to estimate
  a phylogenetic network that displays the relationships between the species in the alignments.
@@ -17,14 +19,11 @@ There is another newer [online tutorial](https://solislemuslab.github.io/snaq-tu
 
 ## topics covered
 
-<!-- - [requirements](https://github.com/JuliaPhylo/v0.16PhyloNetworks-wiki-tutorial/wiki/Workshop-Requirements) -->
-- [example data](https://github.com/JuliaPhylo/v0.16PhyloNetworks-wiki-tutorial/wiki/Example-Data)
-  to download
-- [TICR pipeline](https://github.com/JuliaPhylo/v0.16PhyloNetworks-wiki-tutorial/wiki/TICR-from-alignments-to-quartet-concordance-factors)
-  overview:
+- [example data]() to download
+- [TICR pipeline]() overview:
   from sequences to quartet concordance factors
   (CFs, proportion of genes having a particular history)
-- [TICR test](https://github.com/JuliaPhylo/v0.16PhyloNetworks-wiki-tutorial/wiki/TICR-test-tree-versus-network):
+- [TICR test]():
   is a population tree with ILS sufficient (vs network)?
 
 ## Set-up

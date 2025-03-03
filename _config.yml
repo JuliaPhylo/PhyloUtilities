@@ -2,7 +2,7 @@ remote_theme: just-the-docs/just-the-docs
 title: PhyloNetworks wiki
 exclude:
    - readme.md
-   - data/
+   - data_results/
    - scripts/
 aux_links:
   "Materials on GitHub":

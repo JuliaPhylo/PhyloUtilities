@@ -40,7 +40,7 @@ This site covers the steps of the TICR pipeline to go from a bunch of multiple a
 
 {: .note }
 **Note** that all these sections are covering the original TICR pipeline well suited for a machine or a cluster of machines without a job scheduler. The scripts automatically parallelize the work across the available cores. Users with access to job schedulers like [SLURM](https://slurm.schedmd.com/) or
-[SGE](https://en.wikipedia.org/wiki/Oracle_Grid_Engine) should check the section on [SLURM pipeline](). The job scheduler does the work of parallelizing the work across available cores.
+[SGE](https://en.wikipedia.org/wiki/Oracle_Grid_Engine) should check the section on [SLURM pipeline](https://juliaphylo.github.io/PhyloUtilities/notebooks/ticr_howtogetQuartetCFs.html). The job scheduler does the work of parallelizing the work across available cores.
 The scripts, in this second pipeline, were created to take full advantage
 of job scheduler capabilities. They were developed for a cluster running SLURM. Adjustments to the submit scripts will be needed, to adapt to your own
 SLURM configuration or to the syntax that your job scheduler wants.

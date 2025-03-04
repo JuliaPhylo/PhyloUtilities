@@ -1,81 +1,20 @@
-# TICR pipeline
+---
+layout: default
+title: SLURM pipeline
+nav_order: 7
+---
 
-PhyloNetworks' [wiki]()
-has a step-by-step tutorial,
-to go from multiple sequence alignments
-to a table of quartet gene frequencies (concordance factors: CFs),
-through BUCKy (to integrate out gene tree uncertainty) or through RAxML.
-To get the `raxml.pl` perl script to run RAxML on each gene,
-download the content of that wiki with
+# TICR pipeline with SLURM
 
-```bash
-#git clone https://github.com/juliaphylo/PhyloNetworks.jl.wiki.git
-```
+The original set of Perl scripts from the TICR pipeline are well suited for a machine or a cluster of machines without a job scheduler. The scripts automatically parallelize the work across the available cores.
 
-then go to the `script/` folder.  
-Full information and code is [here](https://github.com/nstenz/TICR).
-Below is more detail to insert data into the pipeline at various stages,
-using one of **two pipelines**, depending on your machine configuration:
-
-- "no-scheduler" pipeline: original set of Perl scripts from the
-  TICR pipeline, well suited for a machine or a cluster of machines
-  without a job scheduler.
-  The scripts automatically parallelize the work across the available cores.
-
-- "slurm" pipeline: well suited for a cluster where users submit jobs
-  via a job scheduler like [SLURM](https://slurm.schedmd.com/) or
-  [SGE](https://en.wikipedia.org/wiki/Oracle_Grid_Engine). The job scheduler
-  does the work of parallelizing the work across available cores.
-  The scripts, in this second pipeline, were created to take full advantage
-  of job scheduler capabilities. They were developed for a cluster running SLURM.
-  Adjustments to the submit scripts will be needed, to adapt to your own
-  SLURM configuration or to the syntax that your job scheduler wants.
+In this section, we present the "slurm" pipeline: well suited for a cluster where users submit jobs via a job scheduler like [SLURM](https://slurm.schedmd.com/) or [SGE](https://en.wikipedia.org/wiki/Oracle_Grid_Engine). The job scheduler does the work of parallelizing the work across available cores.
+The scripts, in this second pipeline, were created to take full advantage
+of job scheduler capabilities. They were developed for a cluster running SLURM.
+Adjustments to the submit scripts will be needed, to adapt to your own
+SLURM configuration or to the syntax that your job scheduler wants.
 
 ## To run MrBayes: we already have alignments
-
-### no-scheduler pipeline
-
-We don't need to run `mdl.pl` if we already have aligned gene sequences
-from separate loci. To run MrBayes on each locus, we can simply
-create a tarball of the Nexus files we wish to use (fasta won't work at this stage).
-The command below assumes that we want to use all the files ending with ".nex"
-in the current directory, one file per locus:
-
-```bash
-tar czf my-genes.tar.gz *.nex
-```
-
-Once the tarball has been successfully generated, we can then specify this
-file as input for [mb.pl](https://github.com/nstenz/TICR/blob/master/scripts/mb.pl)
-assuming we have a valid MrBayes block located in the file "bayes.txt":
-
-```bash
-mb.pl my-genes.tar.gz -m bayes.txt -o my-genes-mb
-```
-
-If we get an error message like `mb.pl: Command not found`, it might be because
-`mb.pl` has no execute permission, or the current directory is not in our "path".
-An easy fix is to run this command instead:
-
-```bash
-perl mb.pl my-genes.tar.gz -m bayes.txt -o my-genes-mb
-```
-
-The resulting output tarball would now be located in `my-genes-mb/my-genes.mb.tar`,
-and can be used normally with
-[bucky.pl](https://github.com/nstenz/TICR/blob/master/scripts/bucky.pl),
-that is, like this:
-
-```bash
-bucky.pl my-genes-mb/my-genes.mb.tar -o mygenes-bucky
-```
-
-The output, with the table of concordance factors for all sets of 4 taxa,
-will be in a file named `my-genes.CFs.csv` inside a directory named `mygenes-bucky`.
-That's the file containing the quartet concordance factors to give to SNaQ as input.
-There is *no* need to do any of the steps below: they are already done by `bucky.pl`.
-
-### slurm pipeline
 
 SLURM will parallelize the MrBayes runs across genes.
 
@@ -151,36 +90,6 @@ for burnin. This `burnin` argument is optional (default: 2501).
 The `outputfolder` will contain the output of `mbsum`.
 
 ## To run bucky on all 4-taxon sets: we already have the mbsum output
-
-### no-scheduler pipeline
-
-If we already ran `mbsum` on the output from MrBayes, for each individual gene,
-we can simply create a tarball containing all the mbsum output files.
-So if we had mbsum output in files named `gene1.in`, `gene2.in`, ... , `gene100.in`,
-we would want to run something similar to the following command to create the tarball:
-
-```bash
-tar czf my-genes-mbsum.tar.gz gene*.in
-```
-
-We can now use this tarball along with the `-s` option in
-[bucky.pl](https://github.com/nstenz/TICR/blob/master/scripts/bucky.pl) like this:
-
-```bash
-bucky.pl my-genes-mbsum.tar.gz -s -o mygenes-bucky
-```
-
-Again, if we get an error like `bucky.pl: Command not found`, we could run instead
-
-```bash
-perl bucky.pl my-genes-mbsum.tar.gz -s -o mygenes-bucky
-```
-
-The output, with the table of concordance factors for all sets of 4 taxa,
-will be in a file named `my-genes.CFs.csv` inside directory `mygenes-bucky`.
-That's the file containing the quartet concordance factors to give to SNaQ as input.
-
-### slurm pipeline
 
 We want to run `bucky` on every 4-taxon set.
 SLURM will parallelize these jobs with the submit script

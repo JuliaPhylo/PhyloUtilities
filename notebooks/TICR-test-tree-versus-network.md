@@ -1,7 +1,7 @@
 ---
 layout: default
 title: TICR goodness-of-fit test
-nav_order: 7
+nav_order: 8
 ---
 
 

@@ -6,8 +6,7 @@ nav_order: 5
 
 # Estimating a species tree from quartet CFs with QMC
 
-
-Quartet MaxCut [(QMC)](http://research.haifa.ac.il/%7Essagi/software/QMCN.tar.gz)
+Quartet MaxCut [(QMC)](https://pubmed.ncbi.nlm.nih.gov/21030737/)
 uses quartets as input, and returns a tree containing as many input quartets as possible.
 The goal is similar to the goal of ASTRAL, but the input is different:
 quartets instead of gene trees. We will use this QMC tree as a starting tree

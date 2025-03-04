@@ -34,7 +34,7 @@ This site covers the steps of the TICR pipeline to go from a bunch of multiple a
 - [Example data](https://juliaphylo.github.io/PhyloUtilities/notebooks/Example-Data.html)
 - [Gene trees with MrBayes](https://juliaphylo.github.io/PhyloUtilities/notebooks/Gene-Trees-MrBayes.html)
 - [Quartet CFs with BUCKy](https://juliaphylo.github.io/PhyloUtilities/notebooks/Quartet-CF-BUCKy.html)
-- [Species tree with TreeQMC](https://juliaphylo.github.io/PhyloUtilities/notebooks/Species-tree-from-quartet-CFs-QMC.html)
+- [Species tree with QMC](https://juliaphylo.github.io/PhyloUtilities/notebooks/Species-tree-from-quartet-CFs-QMC.html)
 - [Alternative pipeline: RAxML+ASTRAL](https://juliaphylo.github.io/PhyloUtilities/notebooks/Gene-Trees-RAxML.html)
 - [TICR goodness-of-fit test](https://juliaphylo.github.io/PhyloUtilities/notebooks/TICR-test-tree-versus-network.html): is a population tree with ILS sufficient (vs network)?
 
@@ -50,7 +50,7 @@ SLURM configuration or to the syntax that your job scheduler wants.
 ### Locally
 
 - Download [BUCKy](http://pages.stat.wisc.edu/~ane/bucky/index.html)
-- Download [TreeQMC](https://github.com/molloy-lab/TREE-QMC)
+- Download [QMC](https://github.com/JuliaPhylo/PhyloUtilities/blob/main/scripts/)
 - Download [MrBayes](http://nbisweden.github.io/MrBayes/)
 - Git clone this repository: `git clone https://github.com/JuliaPhylo/PhyloUtilities.git`
 

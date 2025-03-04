@@ -4,9 +4,9 @@ title: TICR goodness-of-fit test
 nav_order: 8
 ---
 
+# TICR goodness-of-fit test: is the tree a good fit for my data?
 
-Installation and data
----------------------
+## Installation and data
 
 Install [R](https://cran.r-project.org) and the R package
 [phylolm](https://github.com/lamho86/phylolm) if you don't already have it.
@@ -33,8 +33,7 @@ cd ../n15.gamma0.30.20.2_n300/
 then start R from that directory. Alternatively, start R from anywhere
 and navigate to that directory within R.
 
-The gist of the test
---------------------
+## The gist of the test
 
 The goal is to measure the goodness-of-fit of the coalescent model along a tree: does a tree
 model with ILS explains the gene tree discordance adequately? We will use gene tree discordance
@@ -186,8 +185,8 @@ That is too few to learn the distribution of quartet CFs *and* to detect outlier
 With 6 taxa, 15 4-taxon sets is also quite low.
 
 
-Reading the data
-----------------
+## Reading the data
+
 
 Let's read the data in R: the quartet concordance factors estimated from the sequences.
 ```r
@@ -219,8 +218,8 @@ We also need to make sure that taxon names are interpreted as names rather than 
 6     10     12      8     15 0.231126667 0.72830333 0.040570000
 ```
 
-Reading the tree
-----------------
+## Reading the tree
+
 
 We also read in the species tree to be tested. This tree needs to have branch
 lengths in coalescent units (number of generations divided by effective population size).
@@ -279,8 +278,8 @@ Both trees have the same topology. They differ a bit in branch lengths.
 Below we use the astral tree only, but feel tree to repeat with the snaq tree
 to see if results are robust to estimation error in branch lengths.
 
-Preliminary calculations
-------------------------
+## Preliminary calculations
+
 
 This is to learn which edges are along the internal path
 of which quartets. It speeds up all future calculations.
@@ -295,8 +294,8 @@ calculating matrix of edges spanned by each quartet... done.
  [1]  1  2  4  5  7  9 12 14 17 18 21 23     # in coalescent units
 ```
 
-Test of the coalescent on the tree
-----------------------------------
+## Test of the coalescent on the tree
+
 
 This is a goodness-of-fit test, assuming that the given branch lengths (in coalescent
 units) are correct.
@@ -342,8 +341,8 @@ resF[1:9] # a single edge remains: #7, to clade 8-10
 ```
 -->
 
-Detecting taxa involved in potential reticulations
---------------------------------------------------
+## Detecting taxa involved in potential reticulations
+
 
 Looking at the outlier 4-taxon sets can point us to taxa that do not fit the
 tree model with ILS.
@@ -448,8 +447,8 @@ About half of outliers (47 out 105) involve both taxa 1 and 15,
 The vast majority of these outlier 4-taxon sets (82 out of 105) involve at least one
 taxon from the group 10-14.
 
-Running TICR on Julia
----------------------
+## Running TICR on Julia
+
 
 Note that we can now run the TICR test on julia with the 
 [`QuartetNetworkGoodnessFit.jl`](https://github.com/JuliaPhylo/QuartetNetworkGoodnessFit.jl) package.

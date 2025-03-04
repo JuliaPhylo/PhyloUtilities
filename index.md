@@ -4,38 +4,50 @@ title: About
 nav_order: 1
 ---
 
-# From alignments to concordance factors: pipeline to generate input data for SNaQ
+# From alignments to concordance factors
 
-This site has material for a software workshop on
-phylogenetic networks,
-used at the 2018 & 2019 [MBL](https://molevol.mbl.edu/index.php/Main_Page)
-workshop on molecular evolution (earlier version for a [2016 workshop](http://tandy.cs.illinois.edu/symposium-2016.html)).
+This site covers the steps of the TICR pipeline to go from a bunch of multiple alignments
+(aligned gene sequences, or loci) to a concordance factors. These concordance factors can then be used to estimate a phylogenetic network that displays the relationships between the species in the alignments.
 
-It covers steps of the TICR pipeline to go from a bunch of multiple alignments
-(aligned gene sequences, or loci) to a concordance factors. These concordance factors can then be used to estimate
- a phylogenetic network that displays the relationships between the species in the alignments.
+- The original [TICR](https://github.com/nstenz/TICR) pipeline
 
-There is another newer [online tutorial](https://solislemuslab.github.io/snaq-tutorial/) created as part of the workshop in the Kew Royal Botanical Gardens: [Methodological Advances in Reticulate Evolution](https://gtiley.github.io/RBG-Networks/about/) taught in November 2023.
+    - analyze each locus with MrBayes
+    - do a concordance analysis with BUCKy on each set of 4 taxa
+    - summarize all quartet concordance factors (CFs)
+    - estimate a species tree using Quartet MaxCut
 
-## topics covered
+    Or an alternative pipeline to
 
-- [example data]() to download
-- [TICR pipeline]() overview:
-  from sequences to quartet concordance factors
-  (CFs, proportion of genes having a particular history)
-- [TICR test]():
-  is a population tree with ILS sufficient (vs network)?
+    - analyze each locus with RAxML, including bootstrap
+    - estimate a species tree with ASTRAL
+
+
+- TICR test in the R package [phylolm](https://github.com/lamho86/phylolm)
+  (Testing Incongruence Checking in R), also now in Julia in [QuartetNetworkGoodnessFit.jl](https://github.com/JuliaPhylo/QuartetNetworkGoodnessFit.jl)
+
+   - test if a population tree with the coalescent (ILS only) is adequate
+     to explain the quartet concordance factors
+   - identify taxa involved in outlier quartets
+
+## Topics covered
+
+- [Example data](https://juliaphylo.github.io/PhyloUtilities/notebooks/Example-Data.html)
+- [Gene trees with MrBayes](https://juliaphylo.github.io/PhyloUtilities/notebooks/Gene-Trees-MrBayes.html)
+- [Quartet CFs with BUCKy](https://juliaphylo.github.io/PhyloUtilities/notebooks/Quartet-CF-BUCKy.html)
+- [Species tree with TreeQMC](https://juliaphylo.github.io/PhyloUtilities/notebooks/Species-tree-from-quartet-CFs-QMC.html)
+- [Alternative pipeline: RAxML+ASTRAL](https://juliaphylo.github.io/PhyloUtilities/notebooks/Gene-Trees-RAxML.html)
+- [TICR goodness-of-fit test](https://juliaphylo.github.io/PhyloUtilities/notebooks/TICR-test-tree-versus-network.html): is a population tree with ILS sufficient (vs network)?
 
 ## Set-up
 
-### locally
+### Locally
 
 - Download [BUCKy](http://pages.stat.wisc.edu/~ane/bucky/index.html)
-- Download [TICR](https://github.com/nstenz/TICR)
-- Download [QuartetMaxCut](http://research.haifa.ac.il/%7Essagi/software/QMCN.tar.gz)
+- Download [TreeQMC](https://github.com/molloy-lab/TREE-QMC)
 - Download [MrBayes](http://nbisweden.github.io/MrBayes/)
+- Git clone this repository: `git clone https://github.com/JuliaPhylo/PhyloUtilities.git`
 
-### for MBL workshop
+### For MBL workshop
 
 Login to your particular virtual machine (VM) using the IP address on the sticker attached to the back of your name tag. If, for example, your IP address was 123.456.789.321, you would type the following into the terminal on your local computer (i.e. your laptop) and press the enter key:
 
@@ -50,25 +62,6 @@ cp -r moledata/phylo-networks ./
 cd phylo-networks
 ```
 
-## more details
-
-- [TICR](https://github.com/nstenz/TICR) pipeline
-
-    - analyze each locus with MrBayes
-    - do a concordance analysis with BUCKy on each set of 4 taxa
-    - summarize all quartet concordance factors (CFs)
-    - estimate a species tree using Quartet MaxCut
-
-    We will *not* cover an alternative pipeline
-    (which you could use outside the workshop) to
-
-    - analyze each locus with RAxML, including bootstrap
-    - estimate a species tree with ASTRAL
+We will *not* cover an alternative RAxML+ASTRAL pipeline (which you could cover outside the workshop).
 
 
-- TICR test in the R package [phylolm](https://github.com/lamho86/phylolm)
-  (Testing Incongruence Checking in R)
-
-   - test if a population tree with the coalescent (ILS only) is adequate
-     to explain the quartet concordance factors
-   - identify taxa involved in outlier quartets

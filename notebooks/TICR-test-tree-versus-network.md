@@ -452,7 +452,7 @@ Running TICR on Julia
 ---------------------
 
 Note that we can now run the TICR test on julia with the 
-[`QuartetNetworkGoodnessFit.jl`](https://cecileane.github.io/QuartetNetworkGoodnessFit.jl/dev/) package.
+[`QuartetNetworkGoodnessFit.jl`](https://github.com/JuliaPhylo/QuartetNetworkGoodnessFit.jl) package.
 
 ```julia
 using QuartetNetworkGoodnessFit, CSV, PhyloPlots
@@ -475,7 +475,7 @@ This p-value shows that the candidate tree (`astraltree`) is not a good fit to t
 This is not surprising since the data in `n15.gamma0.30.20.2_n300` 
 corresponds to simulated data from a network with 3 hybridizations, and `astraltree` has 0 hybridizations. 
 
-An explanation of all the output components (as well as input arguments) can be found in the documentation [here](https://cecileane.github.io/QuartetNetworkGoodnessFit.jl/dev/lib/public/#QuartetNetworkGoodnessFit.ticr!-Tuple{HybridNetwork,%20DataFrames.DataFrame,%20Bool}).
+An explanation of all the output components (as well as input arguments) can be found in the documentation [here](https://juliaphylo.github.io/QuartetNetworkGoodnessFit.jl/dev/man/gof/).
 
 
 

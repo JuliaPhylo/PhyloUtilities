@@ -4,7 +4,7 @@ title: Quartet CFs with BUCKy
 nav_order: 4
 ---
 
-# Estimating quartet CFs wwith BUCKy
+# Estimating quartet CFs with BUCKy
 
 We can combine the MrBayes analyses across all loci to estimate the proportion of genes
 (concordance factor) having a given quartet, for all quartets:
@@ -63,9 +63,9 @@ This will be the input to
 [SNaQ](https://juliaphylo.github.io/SNaQ.jl/stable/):
 to estimate a phylogenetic tree or network.
 SNaQ will also need a topology to start the network search,
-like a first estimate of a species tree. We can use a tree from Quartet MaxCut (next step).
+like a first estimate of a species tree. We can use a tree from TreeQMC (next step).
 Alternatively, we can run RAxml on each locus and then run ASTRAL
-[(here)]().
+[(here)](https://juliaphylo.github.io/PhyloUtilities/notebooks/Gene-Trees-RAxML.html).
 
 Back to BUCKy analyses: If the tree samples from MrBayes have already been summarized with
 `mbsum`, the script `bucky.pl` can take these in (instead of tree samples from MrBayes)

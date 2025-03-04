@@ -19,7 +19,7 @@ To run RAxML on each gene, we can use the script `raxml.pl` in the `script/` fol
 To do so, still from the data folder `baseline.gamma0.3_n30/`, we first uncompress
 the tarball that has the alignments in nexus format. The script won't do this for us
 unfortunately. Also, to keep (thousands of) files organized, we uncompress these files
-in a folder `nexus/` within our `input/` folder. Note that if you followed the steps in [The Data](https://github.com/JuliaPhylo/v0.16PhyloNetworks-wiki-tutorial/wiki/The-Data) section, you already created the `input/nexus` folder.
+in a folder `nexus/` within our `input/` folder. Note that if you followed the steps in the [Example Data](https://juliaphylo.github.io/PhyloUtilities/notebooks/Example-Data.html) section, you already created the `input/nexus` folder.
 
 ```
 mkdir input/nexus

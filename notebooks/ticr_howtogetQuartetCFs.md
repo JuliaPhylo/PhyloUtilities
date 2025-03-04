@@ -14,6 +14,15 @@ of job scheduler capabilities. They were developed for a cluster running SLURM.
 Adjustments to the submit scripts will be needed, to adapt to your own
 SLURM configuration or to the syntax that your job scheduler wants.
 
+To get these scripts, we need to git clone the original TICR repo. The slurm scripts are in the `scripts-cluster` folder:
+
+```
+git clone https://github.com/nstenz/TICR.git
+cd TICR
+ls
+```
+
+
 ## To run MrBayes: we already have alignments
 
 SLURM will parallelize the MrBayes runs across genes.
